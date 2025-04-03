@@ -14,7 +14,7 @@ class CityRepository {
     }
 
 // its an ORM it automatically does its task we dont have to write sql code
-    async deleteCity({ cityId }){
+    async deleteCity(cityId){
     try {
         await City.destroy({
             where: {
@@ -29,11 +29,11 @@ class CityRepository {
         }
     }
 
-    async updateCity(CityId, data){
+    async updateCity(cityId, data){
         try{
             const city = await City.update(data,{
                 where: {
-                    id: cityId
+                    id:cityId
                 }
             });
             return city;
@@ -43,13 +43,13 @@ class CityRepository {
         }
     }
     
-    async getCity(CityId){
+    async getCity(cityId){
         try{
             const city =await City.findByPk(cityId);
-            return City;
+            return city;
         }catch(error){
             console.log("something went wrong in the repository layer");
-            throw{error};
+            throw{ error };
         }
     }
 }
